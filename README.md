@@ -1,6 +1,8 @@
+![HKA Logo](./template/logo/hka_horizontal.svg)
+
 # Typst Template HKA
 
-This is a thesis template written in [Typst](https://typst.app/), 
+This is a thesis template written in [Typst](https://typst.app/),
 based on the [template of the TU Munich](https://github.com/ls1intum/thesis-template-typst).
 
 ## Usage
@@ -47,7 +49,7 @@ In the intranet you can download the official titlepage. As Typst is not able to
 Every header includes the heading of the current chapter, section or subsection.
 ![Current Subsection](assets/image.png)
 
-If a new section or subsection starts at the current page this one is chosen. 
+If a new section or subsection starts at the current page this one is chosen.
 ![New Section](assets/image-1.png)
 
 If a new chapter starts at the current page, no header will be shown.
