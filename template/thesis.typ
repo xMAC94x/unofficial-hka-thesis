@@ -11,12 +11,16 @@
 #open-title-page(settings: settings)
 // Customize your company logo or just use the one from the university
 #grid(
-  columns: (1fr, 1fr),
+  columns: (1fr, auto, 15pt, auto),
   align(left)[
     #image("/logo/company.svg", height: 1.5cm)
   ],
   align(right)[
-    #image("/logo/HKALogo.png", height: 2cm)
+    #image("/logo/hka_text.svg", height: 1.0cm)
+  ],
+  box(width: auto),
+  align(right)[
+    #image("/logo/hka_horizontal.svg", height: 1.0cm)
   ]
 )
 
