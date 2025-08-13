@@ -1,4 +1,7 @@
+#import "@preview/unofficial-hka-thesis:1.0.2": *
+
 #let settings = (
+  language: "en",
   font-body: "New Computer Modern",
   font-body-size: 12pt,
   font-figures-subtitle-size: 0.85em,
@@ -22,3 +25,4 @@
   ),
 )
 
+#validate-settings(settings)

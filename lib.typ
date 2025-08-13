@@ -1,4 +1,6 @@
 #import "modules/titlepage.typ": *
+#import "modules/metadata.typ": ThesisDegree, ThesisDegreeValues, validate-metadata
+#import "modules/settings.typ": validate-settings
 #import "@preview/glossarium:0.5.4": print-glossary, register-glossary
 
 #let in-outline = state("in-outline", false)
@@ -13,9 +15,9 @@
   // Page Setup
   set page(
     margin: (
-      left: settings.page-margins.left, 
-      right: settings.page-margins.right, 
-      top: settings.page-margins.top, 
+      left: settings.page-margins.left,
+      right: settings.page-margins.right,
+      top: settings.page-margins.top,
       bottom: settings.page-margins.bottom
     ),
     numbering: "I",
@@ -25,16 +27,16 @@
 
   // Body Font Family
   set text(
-    font: settings.font-body, 
-    size: settings.font-body-size, 
-    lang: "en"
+    font: settings.font-body,
+    size: settings.font-body-size,
+    lang: settings.language
   )
 
   show math.equation: set text(weight: 400)
 
   // Headings
   show heading: set block(
-    below: settings.headings-spacing.below, 
+    below: settings.headings-spacing.below,
     above: settings.headings-spacing.above
   )
   show heading: set text(font: settings.font-body, size: settings.font-heading-size)
@@ -68,49 +70,49 @@
   outline(
     title: {
       heading(outlined: false, "Table of Contents")
-      
+
     },
     target: heading.where(supplement: [Chapter], outlined: true),
     indent: auto,
     depth: 3
   )
-  
+
   v(2.4fr)
-  pagebreak()
+  pagebreak(weak: true)
 
   // List of Figures
   outline(
     title: {
       heading(outlined: false, "List of Figures")
-      
+
     },
     target: figure.where(kind: image),
   )
-  pagebreak()
+  pagebreak(weak: true)
 
   // List of Tables
   outline(
     title: {
       heading(outlined: false, "List of Tables")
-      
+
     },
     target: figure.where(kind: table)
   )
-  pagebreak()
+  pagebreak(weak: true)
 
   // List of Listings
   outline(
     title: {
       heading(outlined: false, "List of Listings")
-      
+
     },
     target: figure.where(kind: raw)
   )
-  pagebreak()
+  pagebreak(weak: true)
 
   // List of Abbreviations
   heading(outlined: false)[List of Abbreviations]
-  
+
   print-glossary(
     abbreviations,
     show-all: false,
@@ -131,7 +133,7 @@
       ]
     } else {
       [
-        #pagebreak()
+        #pagebreak(weak: true)
         #it
       ]
     }
@@ -146,7 +148,7 @@
     let top-level-number = numbering-of-heading.slice(0, numbering-of-heading.position("."))
     [#top-level-number.#it]
   })
-  
+
   set page(
     // Header with current heading
     header: context {
@@ -192,12 +194,12 @@
       align(center, display-numbering + " " + display-heading)
       line(length: 100%, stroke: (paint: gray))
     },
-    
+
     // Footer with Page Numbering
     footer: context {
       let current-page = counter(page).display()
       let final-page = counter(page).final().first()
-  
+
       line(length: 100%, stroke: (paint: gray))
       align(center)[#current-page / #final-page]
     }
@@ -236,9 +238,9 @@
     } else if it.numbering != none {
       prefixed-numbering = [#counter(heading).display()]
     }
-    
+
     block(
-      below: 0.85em, 
+      below: 0.85em,
       above: 1.75em
     )[
       #prefixed-numbering #it.body

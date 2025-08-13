@@ -1,4 +1,4 @@
-#import "@preview/unofficial-hka-thesis:1.0.1": *
+#import "@preview/unofficial-hka-thesis:1.0.2": *
 #import "abbreviations.typ": abbreviations
 #import "settings/metadata.typ": *
 #import "settings/settings.typ": *
@@ -7,36 +7,23 @@
 #show: make-glossary
 #register-glossary(abbreviations)
 
-#set document(title: title-english, author: author)
-#open-title-page(settings: settings)
-// Customize your company logo or just use the one from the university
-#grid(
-  columns: (1fr, auto, 15pt, auto),
-  align(left)[
-    #image("/logo/company.svg", height: 1.5cm)
-  ],
-  align(right)[
-    #image("/logo/hka_text.svg", height: 1.0cm)
-  ],
-  box(width: auto),
-  align(right)[
-    #image("/logo/hka_horizontal.svg", height: 1.0cm)
-  ]
-)
-
-#finish-title-page(
+#set document(title: metadata.title.main, author: metadata.author)
+#title-page(
   settings: settings,
-  degree: degree,
-  program: program,
-  title: title-english,
-  subtitle: subtitle-english,
-  author: author,
-  matriculation-number: matriculation-number,
-  place-of-work: place-of-work,
-  supervisor: supervisor,
-  advisor: advisor,
-  start-date: start-date,
-  submission-date: submission-date,
+  metadata: metadata,
+  [#grid(
+    columns: (1fr, auto, 15pt, auto),
+    align(left)[
+      #image("/logo/company.svg", height: 1.5cm)
+    ],
+    align(right)[
+      #image("/logo/hka_text.svg", height: 1.0cm)
+    ],
+    box(width: auto),
+    align(right)[
+      #image("/logo/hka_horizontal.svg", height: 1.0cm)
+    ]
+  )]
 )
 
 #show: preface.with(settings: settings)
@@ -46,6 +33,7 @@
 
 // Statutory Declaration
 #include "supplementary/statutoryDeclaration.typ"
+
 #pagebreak()
 
 // Abstract
