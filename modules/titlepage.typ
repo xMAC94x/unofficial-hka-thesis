@@ -59,8 +59,8 @@
       if metadata.place-of-work != "" [#strong("Place of Work: ")], [#metadata.place-of-work],
       strong("Supervisor: "), metadata.supervisor,
       if metadata.advisor != "" [#strong("Advisor: ")], [#metadata.advisor],
-      strong("Start Date: "), metadata.start-date,
-      strong("Submission Date: "), metadata.submission-date,
+      if metadata.start-date != "" [#strong("Start Date: ")], [#metadata.start-date],
+      if metadata.submission-date != "" [#strong("Submission Date: ")], [#metadata.submission-date],
     )
   )
 
