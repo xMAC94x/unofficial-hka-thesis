@@ -1,5 +1,5 @@
-#import "@preview/unofficial-hka-thesis:1.0.2": todo
+#import "@preview/drafting:0.2.2": inline-note
 
 #heading(outlined: false, numbering: none, "Abstract")
 
-#todo("Abstract")
+#inline-note[Abstract]
